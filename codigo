@@ -1,0 +1,11 @@
+DELIMITER //
+CREATE FUNCTION TotalCustomersRegistered(Day DATE)
+RETURNS INT DETERMINISTIC
+BEGIN
+    DECLARE total INT;
+    SELECT COUNT(*) INTO total
+    FROM Customers
+    WHERE DATE(RegistrationDate) = Day;
+    RETURN total;
+END //
+DELIMITER ;
